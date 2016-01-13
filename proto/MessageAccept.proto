@@ -1,0 +1,4 @@
+message MessageAccept
+{
+    required int64 session_id = 1;
+}

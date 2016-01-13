@@ -1,0 +1,26 @@
+/* * * * * * * * * * * * * * * *
+* YHGenomics Inc.
+* Author     : yang shubo
+* Date       : 2016-01-13
+* Description: handler for MessageRequestPut
+* * * * * * * * * * * * * * * */
+
+#ifndef MESSAGEREQUESTPUT_HANDLER_
+#define MESSAGEREQUESTPUT_HANDLER_
+
+#include <string>
+#include <memory>
+
+#include <MRT.h>
+#include <ProtocolSession.h>
+#include <google/protobuf/message.h>
+#include <MessageRequestPut.pb.h>
+
+static int MessageRequestPutHandler( ProtocolSession * session , uptr<MessageRequestPut> msg )
+{
+    return 0;
+}
+
+#endif
+
+// !MESSAGEREQUESTPUT_HANDLER_

@@ -74,9 +74,10 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\3rd;$(IncludePath)</IncludePath>
+    <IncludePath>..\3rd;..\inc;..\;..\message;$(IncludePath)</IncludePath>
     <ReferencePath>..\lib;..\3rd;$(ReferencePath)</ReferencePath>
     <LibraryPath>..\3rd;..\lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>..\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -109,6 +110,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libuv.lib;maraton-framework-v3.lib;libprotobuf.lib;advapi32.lib;iphlpapi.lib;psapi.lib;shell32.lib;userenv.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -146,7 +148,61 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\message\MessageAccept.pb.cc" />
+    <ClCompile Include="..\message\MessageActionError.pb.cc" />
+    <ClCompile Include="..\message\MessageAlive.pb.cc" />
+    <ClCompile Include="..\message\MessageBlockData.pb.cc" />
+    <ClCompile Include="..\message\MessageGet.pb.cc" />
+    <ClCompile Include="..\message\MessagePut.pb.cc" />
+    <ClCompile Include="..\message\MessageRegister.pb.cc" />
+    <ClCompile Include="..\message\MessageRequestGet.pb.cc" />
+    <ClCompile Include="..\message\MessageRequestGetToken.pb.cc" />
+    <ClCompile Include="..\message\MessageRequestPut.pb.cc" />
+    <ClCompile Include="..\message\MessageRequestPutToken.pb.cc" />
+    <ClCompile Include="..\message\MessageSyncBlock.pb.cc" />
+    <ClCompile Include="..\message\MessageToken.pb.cc" />
+    <ClCompile Include="..\message\MessageTokenACK.pb.cc" />
+    <ClCompile Include="..\message\MessageUpdateBlock.pb.cc" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\ProtocolSession.cpp" />
+    <ClCompile Include="..\src\PutConnector.cpp" />
+    <ClCompile Include="..\src\PutSession.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\MessageAcceptHandler.h" />
+    <ClInclude Include="..\inc\MessageActionErrorHandler.h" />
+    <ClInclude Include="..\inc\MessageAliveHandler.h" />
+    <ClInclude Include="..\inc\MessageBlockDataHandler.h" />
+    <ClInclude Include="..\inc\MessageGetHandler.h" />
+    <ClInclude Include="..\inc\MessagePutHandler.h" />
+    <ClInclude Include="..\inc\MessageRegisterHandler.h" />
+    <ClInclude Include="..\inc\MessageRequestGetHandler.h" />
+    <ClInclude Include="..\inc\MessageRequestGetTokenHandler.h" />
+    <ClInclude Include="..\inc\MessageRequestPutHandler.h" />
+    <ClInclude Include="..\inc\MessageRequestPutTokenHandler.h" />
+    <ClInclude Include="..\inc\MessageSyncBlockHandler.h" />
+    <ClInclude Include="..\inc\MessageTokenACKHandler.h" />
+    <ClInclude Include="..\inc\MessageTokenHandler.h" />
+    <ClInclude Include="..\inc\MessageUpdateBlockHandler.h" />
+    <ClInclude Include="..\inc\MessageUtils.h" />
+    <ClInclude Include="..\inc\ProtocolSession.h" />
+    <ClInclude Include="..\inc\PutConnector.h" />
+    <ClInclude Include="..\inc\PutSession.h" />
+    <ClInclude Include="..\message\MessageAccept.pb.h" />
+    <ClInclude Include="..\message\MessageActionError.pb.h" />
+    <ClInclude Include="..\message\MessageAlive.pb.h" />
+    <ClInclude Include="..\message\MessageBlockData.pb.h" />
+    <ClInclude Include="..\message\MessageGet.pb.h" />
+    <ClInclude Include="..\message\MessagePut.pb.h" />
+    <ClInclude Include="..\message\MessageRegister.pb.h" />
+    <ClInclude Include="..\message\MessageRequestGet.pb.h" />
+    <ClInclude Include="..\message\MessageRequestGetToken.pb.h" />
+    <ClInclude Include="..\message\MessageRequestPut.pb.h" />
+    <ClInclude Include="..\message\MessageRequestPutToken.pb.h" />
+    <ClInclude Include="..\message\MessageSyncBlock.pb.h" />
+    <ClInclude Include="..\message\MessageToken.pb.h" />
+    <ClInclude Include="..\message\MessageTokenACK.pb.h" />
+    <ClInclude Include="..\message\MessageUpdateBlock.pb.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
