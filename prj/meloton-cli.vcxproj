@@ -163,12 +163,19 @@
     <ClCompile Include="..\message\MessageToken.pb.cc" />
     <ClCompile Include="..\message\MessageTokenACK.pb.cc" />
     <ClCompile Include="..\message\MessageUpdateBlock.pb.cc" />
+    <ClCompile Include="..\src\FileStream.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\MasterConnector.cpp" />
+    <ClCompile Include="..\src\MasterSession.cpp" />
     <ClCompile Include="..\src\ProtocolSession.cpp" />
     <ClCompile Include="..\src\PutConnector.cpp" />
     <ClCompile Include="..\src\PutSession.cpp" />
+    <ClCompile Include="..\src\Variable.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\inc\FileStream.h" />
+    <ClInclude Include="..\inc\MasterConnector.h" />
+    <ClInclude Include="..\inc\MasterSession.h" />
     <ClInclude Include="..\inc\MessageAcceptHandler.h" />
     <ClInclude Include="..\inc\MessageActionErrorHandler.h" />
     <ClInclude Include="..\inc\MessageAliveHandler.h" />
@@ -188,6 +195,7 @@
     <ClInclude Include="..\inc\ProtocolSession.h" />
     <ClInclude Include="..\inc\PutConnector.h" />
     <ClInclude Include="..\inc\PutSession.h" />
+    <ClInclude Include="..\inc\Variable.h" />
     <ClInclude Include="..\message\MessageAccept.pb.h" />
     <ClInclude Include="..\message\MessageActionError.pb.h" />
     <ClInclude Include="..\message\MessageAlive.pb.h" />

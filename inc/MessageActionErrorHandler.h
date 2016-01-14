@@ -18,6 +18,7 @@
 
 static int MessageActionErrorHandler( ProtocolSession * session , uptr<MessageActionError> msg )
 {
+    printf( "%d:%s" , msg->code( ) , msg->message( ).c_str() );
     return 0;
 }
 

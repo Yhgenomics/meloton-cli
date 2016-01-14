@@ -15,9 +15,12 @@
 #include <ProtocolSession.h>
 #include <google/protobuf/message.h>
 #include <MessageToken.pb.h>
+#include <Variable.h>
 
 static int MessageTokenHandler( ProtocolSession * session , uptr<MessageToken> msg )
 {
+    Variable::token = move_ptr( msg );
+    session->close( );
     return 0;
 }
 

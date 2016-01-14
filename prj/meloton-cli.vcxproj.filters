@@ -56,6 +56,18 @@
     <ClCompile Include="..\message\MessageUpdateBlock.pb.cc">
       <Filter>message</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\MasterConnector.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MasterSession.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Variable.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\FileStream.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="inc">
@@ -170,6 +182,18 @@
     </ClInclude>
     <ClInclude Include="..\message\MessageUpdateBlock.pb.h">
       <Filter>message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\MasterConnector.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\MasterSession.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\Variable.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\FileStream.h">
+      <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

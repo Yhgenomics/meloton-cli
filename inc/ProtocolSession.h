@@ -22,6 +22,19 @@ public:
     virtual void on_write   ( uptr<MRT::Buffer> data ) override;
     virtual void on_close   ( )                        override;
 
+private:
+
+    enum ParseState
+    {
+        kHead = 1,
+        kLength,
+        kBody
+    };
+
+    MRT::CircleBuffer   circle_buffer_;
+    ParseState          parse_state_ = ParseState::kHead;
+    size_t              body_length_ = 0;
+
 };
 
 #endif // !PROTOCOL_SESSION_H_
