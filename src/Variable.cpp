@@ -6,3 +6,4 @@ std::string Variable::mode          = "";
 std::string Variable::master_ip     = "";
 uptr<MessageToken> Variable::token  = nullptr;
 size_t  Variable::block_index       = 0;
+FileStream Variable::file_stream;

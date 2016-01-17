@@ -41,6 +41,7 @@ void FileStream::open( std::string file , std::string mode )
     if ( this->file_ != nullptr )
     {
         fclose( this->file_ );
+        return;
     } 
 
     this->file_ = fopen( file.c_str( ) , mode.c_str( ) );
@@ -84,7 +85,17 @@ size_t FileStream::write( uptr<MRT::Buffer> buffer )
                              this->file_ );
 }
 
+size_t FileStream::write( const char* buffer ,
+                          size_t buffer_size )
+{
+    if ( this->file_ == nullptr )
+        return 0;
 
+    this->offset_ += fwrite( buffer , 
+                             1 ,
+                             buffer_size , 
+                             this->file_ );
+}
 
 uptr<MRT::Buffer> FileStream::read( size_t pos , size_t size )
 {

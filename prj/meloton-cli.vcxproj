@@ -164,6 +164,8 @@
     <ClCompile Include="..\message\MessageTokenACK.pb.cc" />
     <ClCompile Include="..\message\MessageUpdateBlock.pb.cc" />
     <ClCompile Include="..\src\FileStream.cpp" />
+    <ClCompile Include="..\src\GetConnector.cpp" />
+    <ClCompile Include="..\src\GetSession.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\MasterConnector.cpp" />
     <ClCompile Include="..\src\MasterSession.cpp" />
@@ -174,6 +176,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\FileStream.h" />
+    <ClInclude Include="..\inc\GetConnector.h" />
+    <ClInclude Include="..\inc\GetSession.h" />
     <ClInclude Include="..\inc\MasterConnector.h" />
     <ClInclude Include="..\inc\MasterSession.h" />
     <ClInclude Include="..\inc\MessageAcceptHandler.h" />

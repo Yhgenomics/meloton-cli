@@ -23,7 +23,10 @@ void MasterSession::on_connect( )
     }
     else if( Variable::mode == "g" )
     {
-
+        uptr<MessageRequestGet> msg = make_uptr( MessageRequestGet );
+        msg->set_path( Variable::remote_path );
+        msg->set_request_id( MRT::UUID::create( ) );
+        this->send_message( move_ptr( msg ) );
     }
     else
     {

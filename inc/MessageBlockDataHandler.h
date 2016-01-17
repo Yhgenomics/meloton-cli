@@ -16,8 +16,23 @@
 #include <google/protobuf/message.h>
 #include <MessageBlockData.pb.h>
 
+#include <GetSession.h>
+
 static int MessageBlockDataHandler( ProtocolSession * session , uptr<MessageBlockData> msg )
 {
+    GetSession* s = ( GetSession* ) session;
+
+    if ( s == nullptr )
+    {
+        return -1;
+    }
+
+    s->file_stream( )->write( msg->data( ).c_str( ) ,
+                              msg->data( ).size( ) );
+
+    s->receive_size( msg->size( ) );
+    s->send_req( );
+
     return 0;
 }
 

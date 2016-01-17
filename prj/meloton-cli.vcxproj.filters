@@ -68,6 +68,12 @@
     <ClCompile Include="..\src\FileStream.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\GetConnector.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GetSession.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="inc">
@@ -193,6 +199,12 @@
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\FileStream.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\GetConnector.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\GetSession.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>

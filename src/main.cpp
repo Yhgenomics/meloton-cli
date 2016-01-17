@@ -2,6 +2,7 @@
 #include <string>
 #include <MasterConnector.h>
 #include <PutConnector.h>
+#include <GetConnector.h>
 #include <Variable.h>
 #include <FileStream.h>
 
@@ -59,16 +60,26 @@ int main( int argc , char* argv[] )
          
         for ( size_t i = 0; i < block_count; i++ )
         {
-            printf( "handle block %d/%d\r\n" , i , block_count);
+            printf( "upload block %d/%d\r\n" , i , block_count);
             Variable::block_index = i;
             MRT::Maraton::instance( )->regist( make_uptr( PutConnector , Variable::token->address( i ) ) );
             MRT::Maraton::instance( )->loop( );
         }
     } 
     else if ( mode == "g" )
-    {
-        MRT::Maraton::instance( )->regist( make_uptr( PutConnector , srv_addr ) );
-        MRT::Maraton::instance( )->loop( );
+    { 
+        auto block_count = Variable::token->address_size( );
+         
+         
+        Variable::file_stream.open( Variable::local_path , "wb+" );
+
+        for ( size_t i = 0; i < block_count; i++ )
+        {
+            printf( "download block %d/%d\r\n" , i , block_count);
+            Variable::block_index = i;
+            MRT::Maraton::instance( )->regist( make_uptr( GetConnector , Variable::token->address( i ) ) );
+            MRT::Maraton::instance( )->loop( );
+        }
     }
     else
     {
