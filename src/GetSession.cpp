@@ -41,12 +41,12 @@ void GetSession::receive_size( size_t s )
     offset_         += s;
     local_offset_   += s;
 
-    fs_->seek( offset_ );
+    Variable::file_stream.seek( offset_ );
 }
 
 FileStream * GetSession::file_stream( )
 {
-    return this->fs_;
+    return &Variable::file_stream;
 }
  
 size_t GetSession::offset( )

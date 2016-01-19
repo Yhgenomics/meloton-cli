@@ -28,6 +28,10 @@ int main( int argc , char* argv[] )
         print_help( );
         return 1;
     }
+    for ( size_t i = 0; i < 5; i++ )
+    {
+        printf( "argv[%lld]: %s\r\n" , i , argv[i]  );
+    }
     
     std::string mode = std::string( argv[1] );
     std::string srv_addr = std::string( argv[2] );
@@ -38,6 +42,7 @@ int main( int argc , char* argv[] )
     Variable::mode = mode;
     Variable::local_path = l_path;
     Variable::remote_path = r_path;
+
 
     MRT::Maraton::instance( )->regist( make_uptr( MasterConnector , Variable::master_ip ) );
     MRT::Maraton::instance( )->loop( );

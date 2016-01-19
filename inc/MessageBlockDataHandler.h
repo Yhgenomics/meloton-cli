@@ -27,8 +27,8 @@ static int MessageBlockDataHandler( ProtocolSession * session , uptr<MessageBloc
         return -1;
     }
 
-    s->file_stream( )->write( msg->data( ).c_str( ) ,
-                              msg->data( ).size( ) );
+    Variable::file_stream.write( msg->data( ).c_str( ) ,
+                                 msg->data( ).size( ) );
 
     s->receive_size( msg->size( ) );
     s->send_req( );
