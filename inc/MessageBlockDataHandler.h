@@ -33,13 +33,13 @@ static int MessageBlockDataHandler( ProtocolSession * session , uptr<MessageBloc
                  msg->size());
 
     s->file_stream()->write( msg->data( ).c_str( ) ,
-                                 msg->data( ).size( ) );
+                             msg->data( ).size( ) );
 
     s->receive_size( msg->size( ) );
     s->send_req( );
 
     return 0;
-}
+}   
 
 #endif
 

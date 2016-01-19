@@ -3,6 +3,8 @@
 #ifdef _WIN32
 #define ftello _ftelli64
 #define fseeko _fseeki64
+#else
+#define _FILE_OFFSET_BITS 64
 #endif
 
 FileStream::FileStream( )
