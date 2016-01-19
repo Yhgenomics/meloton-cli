@@ -32,7 +32,7 @@ static int MessageBlockDataHandler( ProtocolSession * session , uptr<MessageBloc
                  msg->offset(),
                  msg->size());
 
-    Variable::file_stream.write( msg->data( ).c_str( ) ,
+    s->file_stream()->write( msg->data( ).c_str( ) ,
                                  msg->data( ).size( ) );
 
     s->receive_size( msg->size( ) );
