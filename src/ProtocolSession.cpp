@@ -54,10 +54,10 @@ void ProtocolSession::on_read( uptr<MRT::Buffer> data )
                         break;
                     }
 
-                    Logger::sys( "Message Size: %lld" , body_length_ );
-
                     body_length_        = len;
                     this->parse_state_  = ParseState::kBody;
+
+                    Logger::sys( "Message Size: %lld" , body_length_ );
                 }break;
             case ParseState::kBody:
                 {
