@@ -28,6 +28,10 @@ static int MessageBlockDataHandler( ProtocolSession * session , uptr<MessageBloc
         return -1;
     }
 
+    Logger::sys( "Block Data Offset: %lld Size: %lld",
+                 msg->offset(),
+                 msg->size());
+
     Variable::file_stream.write( msg->data( ).c_str( ) ,
                                  msg->data( ).size( ) );
 

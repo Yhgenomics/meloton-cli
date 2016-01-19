@@ -53,13 +53,13 @@ int main( int argc , char* argv[] )
 
         if ( !FileStream::exist( Variable::local_path  ) )
         {
-            printf( "local file do not exist\r\n" );
+            Logger::error( "local file do not exist\r\n" );
             return 1;
         }
 
         if ( Variable::token == nullptr )
         {
-            printf( "master has no such file" );
+            Logger::error( "master has no such file" );
             return 1;
         }
 
@@ -83,7 +83,7 @@ int main( int argc , char* argv[] )
 
         for ( size_t i = 0; i < block_count; i++ )
         {
-            printf( "download block %d/%d\r\n" , i , block_count);
+            Logger::sys( "download block %d/%d\r\n" , i , block_count);
             Variable::block_index = i;
             MRT::Maraton::instance( )->regist( make_uptr( GetConnector , Variable::token->address( i ) ) );
             MRT::Maraton::instance( )->loop( );

@@ -33,6 +33,11 @@ void GetSession::send_req( )
     msg->set_token( token );
 
     this->send_message( move_ptr( msg ) );
+
+    Logger::sys( "Request Block:%lld  Offset: %lld Size: %lld",
+                 index,
+                 local_offset_ ,
+                 total_size_ > get_size_ ? get_size_ : total_size_);
 }
 
 void GetSession::receive_size( size_t s )
