@@ -28,6 +28,7 @@ int main( int argc , char* argv[] )
         print_help( );
         return 1;
     }
+
     for ( size_t i = 0; i < 5; i++ )
     {
          Logger::sys( "argv[%lld]: %s" , i , argv[i]  );
@@ -46,6 +47,16 @@ int main( int argc , char* argv[] )
     Logger::sys( "connect to master" );
     MRT::Maraton::instance( )->regist( make_uptr( MasterConnector , Variable::master_ip ) );
     MRT::Maraton::instance( )->loop( );
+
+    auto block_num = Variable::token->address_size();
+
+    for ( size_t i = 0; i < block_num; i++ )
+    {
+        Logger::sys( "Addr: %s Token: %s Size: %lld" ,
+                     Variable::token->address(i).c_str() ,
+                     Variable::token->token(i).c_str() ,
+                     Variable::token->size(i));
+    }
 
     if ( mode == "p" )
     {
