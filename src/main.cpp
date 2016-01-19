@@ -43,12 +43,14 @@ int main( int argc , char* argv[] )
     Variable::local_path = l_path;
     Variable::remote_path = r_path;
 
-
+    Logger::sys( "connect to master" );
     MRT::Maraton::instance( )->regist( make_uptr( MasterConnector , Variable::master_ip ) );
     MRT::Maraton::instance( )->loop( );
 
     if ( mode == "p" )
     {
+        Logger::sys( "start uploading block" );
+
         if ( !FileStream::exist( Variable::local_path  ) )
         {
             printf( "local file do not exist\r\n" );
@@ -73,8 +75,9 @@ int main( int argc , char* argv[] )
     } 
     else if ( mode == "g" )
     { 
+        Logger::sys( "start downloading block" );
+
         auto block_count = Variable::token->address_size( );
-         
          
         Variable::file_stream.open( Variable::local_path , "wb+" );
 
