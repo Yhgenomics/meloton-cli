@@ -66,7 +66,6 @@ public:
 
     static uptr<MRT::Buffer> build(::google::protobuf::Message * message)
     {
-        Logger::sys( "Build Message %s" , message->GetTypeName( ).c_str( ) );
         size_t message_id = hash_name( message->GetTypeName( ) );
         std::string body = message->SerializeAsString( );
         MRT::Buffer buffer(body.size( ) + sizeof( size_t ));
@@ -84,6 +83,7 @@ public:
         message_id = *( (size_t*) data );
         data += sizeof( size_t );
         int msg_len = scast<int>( len - sizeof( size_t ) );
+        Logger::sys( "Receive Message %lld" , message_id );
         switch( message_id )
         {
             case 0x416567757377676F : 
