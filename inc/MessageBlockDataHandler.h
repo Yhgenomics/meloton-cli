@@ -16,6 +16,7 @@
 #include <google/protobuf/message.h>
 #include <MessageBlockData.pb.h>
 
+#include <Variable.h>
 #include <GetSession.h>
 
 static int MessageBlockDataHandler( ProtocolSession * session , uptr<MessageBlockData> msg )
