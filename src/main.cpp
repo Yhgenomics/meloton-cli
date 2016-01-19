@@ -30,7 +30,7 @@ int main( int argc , char* argv[] )
     }
     for ( size_t i = 0; i < 5; i++ )
     {
-        printf( "argv[%lld]: %s\r\n" , i , argv[i]  );
+         Logger::sys( "argv[%lld]: %s" , i , argv[i]  );
     }
     
     std::string mode = std::string( argv[1] );
@@ -53,7 +53,7 @@ int main( int argc , char* argv[] )
 
         if ( !FileStream::exist( Variable::local_path  ) )
         {
-            Logger::error( "local file do not exist\r\n" );
+            Logger::error( "local file do not exist" );
             return 1;
         }
 
@@ -67,7 +67,7 @@ int main( int argc , char* argv[] )
          
         for ( size_t i = 0; i < block_count; i++ )
         {
-            printf( "upload block %d/%d\r\n" , i , block_count);
+            printf( "upload block %d/%d" , i , block_count);
             Variable::block_index = i;
             MRT::Maraton::instance( )->regist( make_uptr( PutConnector , Variable::token->address( i ) ) );
             MRT::Maraton::instance( )->loop( );
@@ -83,7 +83,7 @@ int main( int argc , char* argv[] )
 
         for ( size_t i = 0; i < block_count; i++ )
         {
-            Logger::sys( "download block %d/%d\r\n" , i , block_count);
+            Logger::sys( "download block %d/%d" , i , block_count);
             Variable::block_index = i;
             MRT::Maraton::instance( )->regist( make_uptr( GetConnector , Variable::token->address( i ) ) );
             MRT::Maraton::instance( )->loop( );

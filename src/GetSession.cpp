@@ -34,8 +34,9 @@ void GetSession::send_req( )
 
     this->send_message( move_ptr( msg ) );
 
-    Logger::sys( "Request Block:%lld  Offset: %lld Size: %lld",
+    Logger::sys( "Request Block:%lld Token: %s Offset: %lld Size: %lld",
                  index,
+                 token.c_str(),
                  local_offset_ ,
                  total_size_ > get_size_ ? get_size_ : total_size_);
 }
