@@ -17,6 +17,8 @@ void ProtocolSession::send_message( uptr<::google::protobuf::Message> message )
     this->send( move_ptr( head ) );
     this->send( move_ptr( length ) );
     this->send( move_ptr( body ) );
+
+    Logger::sys( "Send Message %s [OK] " , message->GetTypeName().c_str() );
 }
 
 void ProtocolSession::on_read( uptr<MRT::Buffer> data )
