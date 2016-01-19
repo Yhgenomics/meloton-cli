@@ -85,7 +85,7 @@ size_t FileStream::write( uptr<MRT::Buffer> buffer )
                              this->file_ );
 }
 
-size_t FileStream::( const char* buffer ,
+size_t FileStream::write( const char* buffer ,
                           size_t buffer_size )
 {
     if ( this->file_ == nullptr )
