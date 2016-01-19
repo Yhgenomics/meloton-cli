@@ -8,11 +8,11 @@
 
 void print_help( )
 {
-    fprintf( stdout , "YHFS" );
-    fprintf( stdout , "Build %s" , __DATE__ );
-    fprintf( stdout , "YHGenomics inc. Copyright" );
-    fprintf( stdout , "========================================" );
-    fprintf( stdout , "usage" );
+    fprintf( stdout , "YHFS\r\n" );
+    fprintf( stdout , "Build %s\r\n" , __DATE__ );
+    fprintf( stdout , "YHGenomics inc. Copyright\r\n" );
+    fprintf( stdout , "========================================\r\n" );
+    fprintf( stdout , "usage\r\n" );
     fprintf( stdout , "meloton-cli <mode> <master address> <remote file> <local file> \r\n" );
     fprintf( stdout , "mode \r\n" );
     fprintf( stdout , "     get : download <remote file> to <local file> \r\n" );
