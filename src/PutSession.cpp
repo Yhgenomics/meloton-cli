@@ -43,7 +43,7 @@ void PutSession::send_data( )
     }
 
     uptr<MessagePut> msg = make_uptr( MessagePut ); 
-    msg->set_index( 0 );
+    msg->set_index( index_ );
     msg->set_token( token_ );
     msg->set_size( data->size() );
     msg->set_offset( f_offset_ );
