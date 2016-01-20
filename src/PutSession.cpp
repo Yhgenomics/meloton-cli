@@ -23,7 +23,7 @@ void PutSession::on_write( uptr<MRT::Buffer> data )
 
 void PutSession::send_data( )
 {
-    const size_t len = 1024*10;
+    const size_t len = 20000;
     size_t send_size = block_size_ > len ? len : block_size_;
     auto data = Variable::file_stream.read( send_size );
     
