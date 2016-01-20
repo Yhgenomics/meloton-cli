@@ -54,6 +54,8 @@ void PutSession::on_close( )
 
 void PutSession::send_data( )
 {
+    std::this_thread::sleep_for( std::chrono::milliseconds( 10 ) );
+
     const size_t len = 1024*1024;
     char* buffer = new char[len];
     size_t send_size = block_size_ > len ? len : block_size_;

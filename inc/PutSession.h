@@ -31,7 +31,7 @@ private:
     size_t block_size_  = 0;
     size_t index_       = 0;
     size_t f_offset_    = 0;
-    FILE*  file_        =0;
+    FILE*  file_        = 0;
 };
 
 #endif // !PUT_SESSION_H_

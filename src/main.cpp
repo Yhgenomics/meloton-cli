@@ -40,15 +40,15 @@ int main( int argc , char* argv[] )
          Logger::sys( "argv[%lld]: %s" , i , argv[i]  );
     }
     
-    std::string mode = std::string( argv[1] );
-    std::string srv_addr = std::string( argv[2] );
-    std::string r_path = std::string( argv[3] );
-    std::string l_path = std::string( argv[4] );
+    std::string mode        = std::string( argv[1] );
+    std::string srv_addr    = std::string( argv[2] );
+    std::string r_path      = std::string( argv[3] );
+    std::string l_path      = std::string( argv[4] );
 
-    Variable::master_ip = srv_addr;
-    Variable::mode = mode;
-    Variable::local_path = l_path;
-    Variable::remote_path = r_path;
+    Variable::master_ip     = srv_addr;
+    Variable::mode          = mode;
+    Variable::remote_path   = r_path;
+    Variable::local_path    = l_path;
 
     Logger::sys( "Connect to master" );
     MRT::Maraton::instance( )->regist( make_uptr( MasterConnector , Variable::master_ip ) );
