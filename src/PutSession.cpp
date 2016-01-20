@@ -4,7 +4,7 @@
 #include <thread>
 void PutSession::on_connect( )
 {
-    Variable::file_stream.open( Variable::local_path , "rb" );
+    Variable::file_stream.open( Variable::local_path.c_str( ) , "rb" );
 
     index_      = Variable::token->index( Variable::block_index );
     token_      = Variable::token->token( Variable::block_index );
