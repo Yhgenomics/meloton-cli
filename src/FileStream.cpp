@@ -124,7 +124,7 @@ uptr<MRT::Buffer> FileStream::read( size_t pos , size_t size )
 
     uptr<MRT::Buffer> ret = make_uptr( MRT::Buffer , size );
     this->offset_ += fread( ret->data( ) ,
-                            1 , 
+                            sizeof(char) , 
                             size ,
                             this->file_ );
     return move_ptr( ret );
@@ -145,7 +145,7 @@ uptr<MRT::Buffer> FileStream::read( size_t size )
     }
 
     auto reads = fread( buffer ,
-                        1 ,
+                        sizeof(char) ,
                         size , 
                         this->file_ );
 

@@ -86,7 +86,7 @@ int main( int argc , char* argv[] )
          
         for ( size_t i = 0; i < block_count; i++ )
         {
-            printf( "upload block %d/%d" , i , block_count);
+            Logger::sys( "Uploading block %d/%d" , i , block_count);
             Variable::block_index = i;
             MRT::Maraton::instance( )->regist( make_uptr( PutConnector , Variable::token->address( i ) ) );
             MRT::Maraton::instance( )->loop( );
