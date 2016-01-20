@@ -68,12 +68,13 @@ public:
     {
         size_t message_id = hash_name( message->GetTypeName( ) );
         std::string body = message->SerializeAsString( );
-        MRT::Buffer buffer(body.size( ) + sizeof( size_t ));
-        char* pbuf = buffer.data( );
+        uptr<MRT::Buffer> buffer = make_uptr( MRT::Buffer , body.size( ) + sizeof( size_t ) );
+        //MRT::Buffer buffer(body.size( ) + sizeof( size_t ));
+        char* pbuf = buffer->data( );
         *((size_t*)pbuf) = message_id;
         pbuf += sizeof( size_t );
         memcpy(pbuf , body.c_str( ) , body.size( ) );
-        return make_uptr( MRT::Buffer , buffer );
+        return move_ptr( buffer );
     }
 
     static int handle( ProtocolSession * session , const void* pdata , size_t len )
