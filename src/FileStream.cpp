@@ -105,8 +105,10 @@ size_t FileStream::write( const char* buffer ,
     return writes;
 }
 
-uptr<MRT::Buffer> FileStream::read( size_t pos , size_t size )
+uptr<MRT::Buffer> FileStream::read( size_t pos , size_t s )
 {
+    size_t size = s;
+
     if ( this->file_ == nullptr )
         return nullptr;
 
@@ -130,8 +132,10 @@ uptr<MRT::Buffer> FileStream::read( size_t pos , size_t size )
     return move_ptr( ret );
 }
 
-uptr<MRT::Buffer> FileStream::read( size_t size )
+uptr<MRT::Buffer> FileStream::read( size_t s )
 {
+    size_t size = s;
+
     if ( this->file_ == nullptr )
         return nullptr;
 
