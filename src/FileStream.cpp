@@ -1,12 +1,14 @@
-#include <FileStream.h>
-#include <stdio.h>
+#define _FILE_OFFSET_BITS 64
 
 #ifdef _WIN32
 #define ftello _ftelli64
 #define fseeko _fseeki64
 #else
-#define _FILE_OFFSET_BITS 64
+
 #endif
+
+#include <FileStream.h>
+#include <stdio.h>
 
 FileStream::FileStream( )
 {
@@ -130,10 +132,9 @@ uptr<MRT::Buffer> FileStream::read( size_t size )
     if ( size == 0 )
         return nullptr;
 
-    auto file_size = this->length( );
-    auto delta = file_size - ( this->offset_ + size );
-    
-    char * buffer = ( char *)malloc( size );
+    auto file_size  = this->length( );
+    long long delta = file_size - ( this->offset_ + size );
+    char * buffer   = new char[size];
 
     if ( delta < 0 )
     {
