@@ -1,4 +1,5 @@
 #include <FileStream.h>
+#include <stdio.h>
 
 #ifdef _WIN32
 #define ftello _ftelli64
