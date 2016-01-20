@@ -24,7 +24,7 @@ void print_help( )
 
 int main( int argc , char* argv[] )
 {  
-    Logger::sys( "Main Thread: %d" , std::this_thread::get_id( ) );
+    Logger::sys( "Main Thread: %lld" , std::this_thread::get_id( ) );
     if ( argc != 5 )
     {
         print_help( );

@@ -110,9 +110,12 @@ uptr<MRT::Buffer> FileStream::read( size_t pos , size_t size )
     if ( this->file_ == nullptr )
         return nullptr;
 
+    if ( size == 0 )
+        return nullptr;
+
     this->seek( pos );
     auto file_size = this->length( );
-    auto delta = file_size - ( pos + size );
+    long long delta = file_size - ( pos + size );
 
     if ( delta < 0 )
     {
@@ -122,7 +125,7 @@ uptr<MRT::Buffer> FileStream::read( size_t pos , size_t size )
     uptr<MRT::Buffer> ret = make_uptr( MRT::Buffer , size );
     this->offset_ += fread( ret->data( ) ,
                             1 , 
-                            ret->size( ) ,
+                            size ,
                             this->file_ );
     return move_ptr( ret );
 }
