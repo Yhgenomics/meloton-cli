@@ -152,11 +152,13 @@ uptr<MRT::Buffer> FileStream::read( size_t s )
 
     uptr<MRT::Buffer> ret = make_uptr( MRT::Buffer , size );
 
+    const int BUF_SIZE = 1024;
     auto bytes2read = s;
-    char buf[512]= { 0 };
+    char buf[BUF_SIZE]= { 0 };
     while ( true )
     {
-        int len = bytes2read > 512 ? 512 : bytes2read;
+        int len = bytes2read > BUF_SIZE ? BUF_SIZE : bytes2read;
+
         auto reads = fread( buf ,
                             sizeof( char ) ,
                             len ,
@@ -167,13 +169,12 @@ uptr<MRT::Buffer> FileStream::read( size_t s )
             break;
         }
 
+        this->offset_ += reads;
+
         ret->push( buf , reads );
 
         bytes2read -= reads;
     }
-
-
-    this->offset_ += bytes2read;
     
     return move_ptr( ret );
 }

@@ -1,7 +1,7 @@
 #include <PutSession.h>
 #include <MessagePut.pb.h>
 #include <Variable.h>
-
+#include <thread>
 void PutSession::on_connect( )
 {
     Variable::file_stream.open( Variable::local_path , "rb" );
@@ -18,7 +18,9 @@ void PutSession::on_connect( )
 
 void PutSession::on_write( uptr<MRT::Buffer> data )
 {
+    std::this_thread::sleep_for( std::chrono::milliseconds( 10 ) );
     send_data( );
+
 }
 
 void PutSession::send_data( )
