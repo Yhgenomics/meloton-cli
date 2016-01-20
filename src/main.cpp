@@ -6,6 +6,7 @@
 #include <Variable.h>
 #include <FileStream.h>
 #include <thread>
+#include <MessagePut.pb.h>
 
 void print_help( )
 {
@@ -23,7 +24,10 @@ void print_help( )
 }
 
 int main( int argc , char* argv[] )
-{  
+{
+    MessagePut p;
+    auto str = p.GetTypeName( );
+
     Logger::sys( "Main Thread: %lld" , std::this_thread::get_id( ) );
     if ( argc != 5 )
     {
