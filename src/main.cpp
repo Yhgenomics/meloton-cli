@@ -44,7 +44,7 @@ int main( int argc , char* argv[] )
     Variable::local_path = l_path;
     Variable::remote_path = r_path;
 
-    Logger::sys( "connect to master" );
+    Logger::sys( "Connect to master" );
     MRT::Maraton::instance( )->regist( make_uptr( MasterConnector , Variable::master_ip ) );
     MRT::Maraton::instance( )->loop( );
     
@@ -56,7 +56,6 @@ int main( int argc , char* argv[] )
 
     auto block_num = Variable::token->address_size();
 
-
     for ( size_t i = 0; i < block_num; i++ )
     {
         Logger::sys( "Srv: %s Token: %s Size: %lld" ,
@@ -67,17 +66,17 @@ int main( int argc , char* argv[] )
 
     if ( mode == "p" )
     {
-        Logger::sys( "start uploading block" );
+        Logger::sys( "Start uploading block" );
 
         if ( !FileStream::exist( Variable::local_path  ) )
         {
-            Logger::error( "local file do not exist" );
+            Logger::error( "Local file do not exist" );
             return 1;
         }
 
         if ( Variable::token == nullptr )
         {
-            Logger::error( "master has no such file" );
+            Logger::error( "Master has no such file" );
             return 1;
         }
          
