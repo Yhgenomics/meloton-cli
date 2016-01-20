@@ -128,7 +128,7 @@ uptr<MRT::Buffer> FileStream::read( size_t size )
 {
     if ( size == 0 )
         return nullptr;
-    auto test = ftello( this->file_ );
+
     auto file_size = this->length( );
     auto delta = file_size - ( this->offset_ + size );
     
