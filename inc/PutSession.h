@@ -21,6 +21,7 @@ public:
 
     virtual void on_connect ( ) override;
     virtual void on_write   ( uptr<MRT::Buffer> data ) override;
+    virtual void on_close   ( )                        override;
 
 private:
 

@@ -18,6 +18,8 @@ void MasterSession::on_connect( )
         msg->set_request_id( MRT::UUID::create( ) );
         msg->set_size( size );
         this->send_message( move_ptr( msg ) );
+
+        Variable::file_stream.close( );
     }
     else if( Variable::mode == "g" )
     {
