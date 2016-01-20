@@ -13,6 +13,8 @@
 #include <MRT.h>
 #include <ProtocolSession.h>
 #include <FileStream.h>
+#include <iostream>
+#include <fstream>
 
 class PutSession :
     public ProtocolSession
@@ -32,6 +34,7 @@ private:
     size_t index_       = 0;
     size_t f_offset_    = 0;
     FILE*  file_        = 0;
+    std::ifstream fstream_;
 };
 
 #endif // !PUT_SESSION_H_

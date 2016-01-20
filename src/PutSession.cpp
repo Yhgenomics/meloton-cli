@@ -1,7 +1,7 @@
+#include <thread>
 #include <PutSession.h>
 #include <MessagePut.pb.h>
 #include <Variable.h>
-#include <thread>
 
 #define _FILE_OFFSET_BITS 64
 
@@ -17,9 +17,10 @@
 
 void PutSession::on_connect( )
 {
-    file_ = fopen( Variable::local_path.c_str( ) , "rb" );
+    fstream_.open( Variable::local_path.c_str( ) );
+    //file_ = fopen( Variable::local_path.c_str( ) , "rb" );
     
-    if ( file_ == nullptr )
+    if ( !fstream_.is_open() )
     {
         Logger::error( "Open file failed" );
         this->close( );
@@ -33,7 +34,8 @@ void PutSession::on_connect( )
     block_size_ = Variable::token->size( Variable::block_index );
     f_offset_   = 0;
 
-    fseeko( file_ , offset_ , SEEK_SET );
+    fstream_.seekg( offset_ );
+    //fseeko( file_ , offset_ , SEEK_SET );
 
     //Variable::file_stream.seek( offset_ );
     send_data( );
@@ -57,10 +59,9 @@ void PutSession::send_data( )
     const size_t len = 1024*1024;
     char* buffer = new char[len];
     size_t send_size = block_size_ > len ? len : block_size_;
-    
-    auto reads = fread( buffer , 1 , send_size , file_);
 
-    std::this_thread::sleep_for( std::chrono::milliseconds( 10 ) );
+    auto reads = fstream_.read( buffer , send_size ).gcount();
+    //auto reads = fread( buffer , 1 , send_size , file_);
 
     if ( reads == 0 )
     {
