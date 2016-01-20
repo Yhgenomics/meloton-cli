@@ -23,7 +23,7 @@ void print_help( )
 
 int main( int argc , char* argv[] )
 {
-     Variable::file_stream.open( "/tmp/tttttt" , "wb+" );
+   /*  Variable::file_stream.open( "/tmp/tttttt" , "wb+" );
 
      std::string s = "";
 
@@ -34,7 +34,7 @@ int main( int argc , char* argv[] )
 
      Variable::file_stream.write( s.c_str( ) , s.size( ) );
 
-     return 1;
+     return 1;*/
 
     if ( argc != 5 )
     {
