@@ -74,6 +74,7 @@ int main( int argc , char* argv[] )
             return 1;
         }
 
+        Variable::file_stream.open( Variable::local_path , "wb+" );
         auto block_count = Variable::token->address_size( );
          
         for ( size_t i = 0; i < block_count; i++ )

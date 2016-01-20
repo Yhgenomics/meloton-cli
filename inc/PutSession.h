@@ -24,8 +24,7 @@ public:
 
 private:
 
-    void send_data( );
-    FileStream fs_;
+    void send_data( ); 
     std::string token_;
     size_t offset_ = 0;
     size_t block_size_ = 0;

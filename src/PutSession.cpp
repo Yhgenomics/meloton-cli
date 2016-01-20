@@ -4,7 +4,7 @@
 
 void PutSession::on_connect( )
 {
-    fs_.open( Variable::local_path , "rb" );
+    Variable::file_stream.open( Variable::local_path , "rb" );
 
     index_      = Variable::token->index( Variable::block_index );
     token_      = Variable::token->token( Variable::block_index );
@@ -12,7 +12,7 @@ void PutSession::on_connect( )
     block_size_ = Variable::token->size( Variable::block_index );
     f_offset_   = 0;
 
-    fs_.seek( offset_ );
+    Variable::file_stream.seek( offset_ );
     send_data( );
 }
 
@@ -23,9 +23,9 @@ void PutSession::on_write( uptr<MRT::Buffer> data )
 
 void PutSession::send_data( )
 {
-    const size_t len = 1024*5;
+    const size_t len = 1024*512;
     size_t send_size = block_size_ > len ? len : block_size_;
-    auto data = fs_.read( send_size );
+    auto data = Variable::file_stream.read( send_size );
 
     if ( data == nullptr || block_size_ == 0 || send_size == 0 )
     {
