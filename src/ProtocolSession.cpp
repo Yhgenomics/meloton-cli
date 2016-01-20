@@ -18,7 +18,6 @@ void ProtocolSession::send_message( uptr<::google::protobuf::Message> message )
     this->send( move_ptr( length ) );
     this->send( move_ptr( body ) );
 
-    Logger::sys( "Send Message %s [OK] " , message->GetTypeName().c_str() );
 }
 
 void ProtocolSession::on_read( uptr<MRT::Buffer> data )
@@ -57,7 +56,6 @@ void ProtocolSession::on_read( uptr<MRT::Buffer> data )
                     body_length_        = len;
                     this->parse_state_  = ParseState::kBody;
 
-                    Logger::sys( "Message Size: %lld" , body_length_ );
                 }break;
             case ParseState::kBody:
                 {

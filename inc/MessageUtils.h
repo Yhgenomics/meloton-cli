@@ -83,7 +83,6 @@ public:
         message_id = *( (size_t*) data );
         data += sizeof( size_t );
         int msg_len = scast<int>( len - sizeof( size_t ) );
-        Logger::sys( "Receive Message %lld" , message_id );
         switch( message_id )
         {
             case 0x416567757377676F : 
