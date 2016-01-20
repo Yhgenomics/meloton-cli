@@ -54,7 +54,7 @@ private:
     static size_t hash_name( std::string name)
     {
         size_t ret = 0;
-        for (int i = 0; i < name.length(); i++)
+        for (int i = 0; i < name.size(); i++)
         {
             char b = (char)name[i];
             size_t v = (((size_t)b << ((i % (char)8) * (char)8)) | i);
