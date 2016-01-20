@@ -36,6 +36,8 @@ void PutSession::send_data( )
         return;
     }
 
+    Logger::sys( "Read Block %lld" , data->size());
+
     if ( block_size_ == 0 || send_size == 0 )
     {
         this->close( );
@@ -48,6 +50,7 @@ void PutSession::send_data( )
     msg->set_size( data->size() );
     msg->set_offset( f_offset_ );
     msg->set_data( data->data( ) , data->size( ) );
+
     this->send_message( move_ptr( msg ) );
 
     f_offset_+=send_size;
