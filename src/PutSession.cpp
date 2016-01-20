@@ -18,7 +18,13 @@
 void PutSession::on_connect( )
 {
     file_ = fopen( Variable::local_path.c_str( ) , "rb" );
-
+    
+    if ( file_ == nullptr )
+    {
+        Logger::error( "Open file failed" );
+        this->close( );
+        return;
+    }
     //Variable::file_stream.open( Variable::local_path , "rb" );
 
     index_      = Variable::token->index( Variable::block_index );
