@@ -93,10 +93,11 @@ size_t FileStream::write( const char* buffer ,
     if ( this->file_ == nullptr )
         return 0;
 
-    this->offset_ += fwrite( buffer , 
-                             1 ,
-                             buffer_size , 
-                             this->file_ );
+    auto writes = fwrite( buffer , 
+                          1 ,
+                          buffer_size , 
+                          this->file_ );
+    this->offset_ += writes;
 }
 
 uptr<MRT::Buffer> FileStream::read( size_t pos , size_t size )
