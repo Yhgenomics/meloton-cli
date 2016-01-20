@@ -49,7 +49,7 @@ void PutSession::send_data( )
     msg->set_token( token_ );
     msg->set_size( data->size() );
     msg->set_offset( f_offset_ );
-    msg->set_data( data->data( ) , data->size( ) );
+    //msg->set_data( data->data( ) , data->size( ) );
 
     this->send_message( move_ptr( msg ) );
 
