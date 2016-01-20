@@ -5,6 +5,7 @@
 #include <GetConnector.h>
 #include <Variable.h>
 #include <FileStream.h>
+#include <thread>
 
 void print_help( )
 {

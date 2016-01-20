@@ -8,6 +8,8 @@
 #ifndef FILE_STREAM_H_
 #define FILE_STREAM_H_
 
+#include <thread>
+#include <stdio.h>
 #include <string>
 #include <MRT.h>
 
