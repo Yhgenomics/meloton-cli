@@ -47,12 +47,19 @@ int main( int argc , char* argv[] )
     Logger::sys( "connect to master" );
     MRT::Maraton::instance( )->regist( make_uptr( MasterConnector , Variable::master_ip ) );
     MRT::Maraton::instance( )->loop( );
+    
+    if ( Variable::token == nullptr )
+    {
+        Logger::error( "Server disconnected.." );
+        return 1;
+    }
 
     auto block_num = Variable::token->address_size();
 
+
     for ( size_t i = 0; i < block_num; i++ )
     {
-        Logger::sys( "Addr: %s Token: %s Size: %lld" ,
+        Logger::sys( "Srv: %s Token: %s Size: %lld" ,
                      Variable::token->address(i).c_str() ,
                      Variable::token->token(i).c_str() ,
                      Variable::token->size(i));
@@ -73,8 +80,7 @@ int main( int argc , char* argv[] )
             Logger::error( "master has no such file" );
             return 1;
         }
-
-        Variable::file_stream.open( Variable::local_path , "wb+" );
+         
         auto block_count = Variable::token->address_size( );
          
         for ( size_t i = 0; i < block_count; i++ )

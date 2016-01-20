@@ -26,8 +26,15 @@ void PutSession::send_data( )
     const size_t len = 1024*512;
     size_t send_size = block_size_ > len ? len : block_size_;
     auto data = Variable::file_stream.read( send_size );
+    
+    if ( data == nullptr )
+    {
+        Logger::error( "Data is nullptr , disconnecting..." );
+        this->close( );
+        return;
+    }
 
-    if ( data == nullptr || block_size_ == 0 || send_size == 0 )
+    if ( block_size_ == 0 || send_size == 0 )
     {
         this->close( );
         return;

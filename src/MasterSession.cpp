@@ -9,16 +9,14 @@
 void MasterSession::on_connect( )
 {
     if ( Variable::mode == "p" )
-    {
-        FileStream fs;
-        fs.open( Variable::local_path , "rb+" );
-        size_t size = fs.length( );
-
+    { 
+        Variable::file_stream.open( Variable::local_path , "rb+" );
+        size_t size = Variable::file_stream.length( ); 
 
         uptr<MessageRequestPut> msg = make_uptr( MessageRequestPut );
         msg->set_path( Variable::remote_path );
         msg->set_request_id( MRT::UUID::create( ) );
-        msg->set_size( fs.length( ) );
+        msg->set_size( Variable::file_stream.length( ) );
         this->send_message( move_ptr( msg ) );
     }
     else if( Variable::mode == "g" )
