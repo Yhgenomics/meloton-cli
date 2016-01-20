@@ -140,27 +140,21 @@ uptr<MRT::Buffer> FileStream::read( size_t size )
 
     auto file_size  = this->length( );
     long long delta = file_size - ( this->offset_ + size );
-    char * buffer   = new char[size];
 
     if ( delta < 0 )
     {
         size += delta;
     }
 
-    auto reads = fread( buffer ,
-                        sizeof(char) ,
-                        size , 
+    uptr<MRT::Buffer> ret = make_uptr( MRT::Buffer , size );
+
+
+    auto reads = fread( ret->data( ) ,
+                        sizeof( char ) ,
+                        size ,
                         this->file_ );
 
-    if ( reads == 0 )
-    {
-        SAFE_DELETE( buffer );
-        return nullptr;
-    }
-    
     this->offset_ += reads;
-    uptr<MRT::Buffer> ret = make_uptr( MRT::Buffer , buffer , reads );
-    SAFE_DELETE( buffer );
     
     return move_ptr( ret );
 }

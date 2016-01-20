@@ -45,11 +45,11 @@ void PutSession::send_data( )
     }
 
     uptr<MessagePut> msg = make_uptr( MessagePut ); 
-    msg->set_index( index_ );
-    msg->set_token( token_ );
+    msg->set_index( 0 );
+    msg->set_token( std::string( token_ ) );
     msg->set_size( data->size() );
     msg->set_offset( f_offset_ );
-    //msg->set_data( data->data( ) , data->size( ) );
+    msg->set_data( data->data( ) , data->size( ) );
 
     this->send_message( move_ptr( msg ) );
 
