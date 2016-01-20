@@ -132,6 +132,9 @@ uptr<MRT::Buffer> FileStream::read( size_t pos , size_t size )
 
 uptr<MRT::Buffer> FileStream::read( size_t size )
 {
+    if ( this->file_ == nullptr )
+        return nullptr;
+
     if ( size == 0 )
         return nullptr;
 

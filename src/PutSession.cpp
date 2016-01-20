@@ -25,7 +25,7 @@ void PutSession::send_data( )
 {
     Logger::sys( "Thread[%lld] Send Data" , std::this_thread::get_id() );
         
-    const size_t len = 1024*512;
+    const size_t len = 1024;
     size_t send_size = block_size_ > len ? len : block_size_;
     auto data = Variable::file_stream.read( f_offset_ , send_size );
     
@@ -43,7 +43,7 @@ void PutSession::send_data( )
     }
 
     uptr<MessagePut> msg = make_uptr( MessagePut ); 
-    msg->set_index( index_ );
+    msg->set_index( 0 );
     msg->set_token( token_ );
     msg->set_size( data->size() );
     msg->set_offset( f_offset_ );
