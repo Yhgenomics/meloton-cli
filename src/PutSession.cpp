@@ -48,8 +48,8 @@ void PutSession::on_close( )
 
 void PutSession::send_data( )
 {
-    const size_t len = 1024*512;
-    char buffer[len] = { 0 };
+    const size_t len = 1024*1024;
+    char* buffer = new char[len];
     size_t send_size = block_size_ > len ? len : block_size_;
     
     auto reads = fread( buffer , 1 , send_size , file_);
@@ -89,4 +89,6 @@ void PutSession::send_data( )
 
     f_offset_ += send_size;
     block_size_ -= send_size;
+
+    SAFE_DELETE( buffer );
 }
