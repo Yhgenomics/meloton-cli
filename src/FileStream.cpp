@@ -98,6 +98,8 @@ size_t FileStream::write( const char* buffer ,
                           buffer_size , 
                           this->file_ );
     this->offset_ += writes;
+
+    return writes;
 }
 
 uptr<MRT::Buffer> FileStream::read( size_t pos , size_t size )
