@@ -131,11 +131,8 @@ uptr<MRT::Buffer> FileStream::read( size_t size )
     auto test = ftello( this->file_ );
     auto file_size = this->length( );
     auto delta = file_size - ( this->offset_ + size );
-    char * buffer = new char[size]
-    {
-        0
-    };
-
+    
+    char * buffer = ( char *)malloc( size );
 
     if ( delta < 0 )
     {
