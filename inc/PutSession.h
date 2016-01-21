@@ -24,10 +24,10 @@ public:
     virtual void on_connect ( ) override;
     virtual void on_write   ( uptr<MRT::Buffer> data ) override;
     virtual void on_close   ( )                        override;
+    void send_data( ); 
 
 private:
 
-    void send_data( ); 
     std::string token_;
     size_t offset_      = 0;
     size_t block_size_  = 0;

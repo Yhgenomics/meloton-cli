@@ -8,6 +8,7 @@
 #ifndef VARIABLE_H_
 #define VARIABLE_H_
 
+#include <fstream>
 #include <string>
 #include <FileStream.h>
 #include <MessageToken.pb.h>
@@ -20,9 +21,10 @@ public:
     static std::string          master_ip;
     static std::string          remote_path;
     static std::string          local_path;
-    static FileStream           file_stream;
     static size_t               block_index;
     static uptr<MessageToken>   token;
+    static std::ofstream        ostream;
+    static std::ifstream        istream;
 };
 
 #endif // !VARIABLE_H_

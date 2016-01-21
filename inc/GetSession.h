@@ -23,7 +23,6 @@ public:
     
     void send_req           ( );
     void receive_size       ( size_t s );
-    FileStream* file_stream ( );
     size_t offset           ( );
 
 private:
@@ -32,7 +31,6 @@ private:
     static size_t offset_  ;
     size_t get_size_        = 1024*1024;
     size_t total_size_      = 0;
-    FileStream* fs_;
 };
 
 #endif // !GET_SESSION_H_

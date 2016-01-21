@@ -10,16 +10,17 @@ void MasterSession::on_connect( )
 {
     if ( Variable::mode == "p" )
     { 
-        Variable::file_stream.open( Variable::local_path , "rb" );
-        size_t size = Variable::file_stream.length( ); 
-
+        Variable::istream.open( Variable::local_path , std::ios::in | std::ios::binary );
+        Variable::istream.seekg( 0 , std::ios::end );
+        size_t size = Variable::istream.tellg( );
+        Logger::log( "Put File Size: %" , size );
         uptr<MessageRequestPut> msg = make_uptr( MessageRequestPut );
         msg->set_path( Variable::remote_path );
         msg->set_request_id( MRT::UUID::create( ) );
         msg->set_size( size );
         this->send_message( move_ptr( msg ) );
 
-        Variable::file_stream.close( );
+        Variable::istream.close( );
     }
     else if( Variable::mode == "g" )
     {

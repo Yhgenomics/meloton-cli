@@ -9,6 +9,7 @@
 #define FILE_STREAM_H_
 
 #include <thread>
+#include <fstream>
 #include <stdio.h>
 #include <string>
 #include <MRT.h>

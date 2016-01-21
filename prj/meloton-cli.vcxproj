@@ -154,6 +154,7 @@
     <ClCompile Include="..\message\MessageBlockData.pb.cc" />
     <ClCompile Include="..\message\MessageGet.pb.cc" />
     <ClCompile Include="..\message\MessagePut.pb.cc" />
+    <ClCompile Include="..\message\MessagePutAccept.pb.cc" />
     <ClCompile Include="..\message\MessageRegister.pb.cc" />
     <ClCompile Include="..\message\MessageRequestGet.pb.cc" />
     <ClCompile Include="..\message\MessageRequestGetToken.pb.cc" />
@@ -185,6 +186,7 @@
     <ClInclude Include="..\inc\MessageAliveHandler.h" />
     <ClInclude Include="..\inc\MessageBlockDataHandler.h" />
     <ClInclude Include="..\inc\MessageGetHandler.h" />
+    <ClInclude Include="..\inc\MessagePutAcceptHandler.h" />
     <ClInclude Include="..\inc\MessagePutHandler.h" />
     <ClInclude Include="..\inc\MessageRegisterHandler.h" />
     <ClInclude Include="..\inc\MessageRequestGetHandler.h" />
@@ -206,6 +208,7 @@
     <ClInclude Include="..\message\MessageBlockData.pb.h" />
     <ClInclude Include="..\message\MessageGet.pb.h" />
     <ClInclude Include="..\message\MessagePut.pb.h" />
+    <ClInclude Include="..\message\MessagePutAccept.pb.h" />
     <ClInclude Include="..\message\MessageRegister.pb.h" />
     <ClInclude Include="..\message\MessageRequestGet.pb.h" />
     <ClInclude Include="..\message\MessageRequestGetToken.pb.h" />

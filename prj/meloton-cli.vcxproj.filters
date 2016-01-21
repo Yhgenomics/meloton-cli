@@ -74,6 +74,9 @@
     <ClCompile Include="..\src\GetSession.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\message\MessagePutAccept.pb.cc">
+      <Filter>message</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="inc">
@@ -205,6 +208,12 @@
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\GetSession.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\message\MessagePutAccept.pb.h">
+      <Filter>message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\MessagePutAcceptHandler.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>

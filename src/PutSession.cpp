@@ -17,7 +17,7 @@
 
 void PutSession::on_connect( )
 {
-    fstream_.open( Variable::local_path.c_str( ) );
+    fstream_.open( Variable::local_path.c_str( ) , std::ios::in | std::ios::binary );
     //file_ = fopen( Variable::local_path.c_str( ) , "rb" );
     
     if ( !fstream_.is_open() )
@@ -43,7 +43,6 @@ void PutSession::on_connect( )
 
 void PutSession::on_write( uptr<MRT::Buffer> data )
 {
-    send_data( );
 }
 
 void PutSession::on_close( )
@@ -56,16 +55,23 @@ void PutSession::on_close( )
 
 void PutSession::send_data( )
 {
-    const size_t len = 1024*1024;
-    char* buffer = new char[len];
-    size_t send_size = block_size_ > len ? len : block_size_;
+    if ( fstream_.eof( ) )
+    {
+        Logger::sys( "End of file, disconnecting..." );
+        this->close( );
+        return;
+    }
 
-    auto reads = fstream_.read( buffer , send_size ).gcount();
+    const size_t len    = 1024*1024;
+    char* buffer        = ( char* ) malloc( len * sizeof( char ) );
+    memset( buffer , 0 , len );
+    size_t send_size    = block_size_ > len ? len : block_size_;
+    auto reads          = fstream_.read( buffer , 
+                                         send_size ).gcount();
     //auto reads = fread( buffer , 1 , send_size , file_);
 
     if ( reads == 0 )
     {
-        Logger::error( "Data is nullptr , disconnecting..." );
         this->close( );
         return;
     }
@@ -89,7 +95,7 @@ void PutSession::send_data( )
 
     uptr<MessagePut> msg = make_uptr( MessagePut ); 
     msg->set_index( 0 );
-    msg->set_token( std::string( token_ ) );
+    msg->set_token( token_ );
     msg->set_size( reads );
     msg->set_offset( f_offset_ );
     msg->set_data( buffer , reads );
@@ -98,6 +104,11 @@ void PutSession::send_data( )
 
     f_offset_ += send_size;
     block_size_ -= send_size;
+
+    if ( block_size_ == 0 )
+    {
+        Logger::sys( "Block send finish" );
+    }
 
     SAFE_DELETE( buffer );
 }

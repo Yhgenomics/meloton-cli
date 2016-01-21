@@ -98,19 +98,21 @@ int main( int argc , char* argv[] )
     } 
     else if ( mode == "g" )
     { 
-        Logger::sys( "start downloading block" );
+        Logger::sys( "Start downloading block" );
 
         auto block_count = Variable::token->address_size( );
          
-        Variable::file_stream.open( Variable::local_path , "wb+" );
+        Variable::ostream.open( Variable::local_path ,  std::ios::out | std::ios::binary | std::ios::trunc );
 
         for ( size_t i = 0; i < block_count; i++ )
         {
-            Logger::sys( "download block %d/%d" , i , block_count);
+            Logger::sys( "Download block %d/%d" , i , block_count);
             Variable::block_index = i;
             MRT::Maraton::instance( )->regist( make_uptr( GetConnector , Variable::token->address( i ) ) );
             MRT::Maraton::instance( )->loop( );
         }
+
+        Variable::ostream.close( );
     }
     else
     {

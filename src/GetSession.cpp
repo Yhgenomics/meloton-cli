@@ -7,7 +7,6 @@ size_t GetSession::offset_ = 0;
 void GetSession::on_connect( )
 {
     this->total_size_ = Variable::token->size( Variable::block_index );
-    this->fs_ = &Variable::file_stream;
     send_req( );
 }
 
@@ -41,13 +40,9 @@ void GetSession::receive_size( size_t s )
     offset_         += s;
     local_offset_   += s;
 
-    Variable::file_stream.seek( offset_ );
-}
-
-FileStream * GetSession::file_stream( )
-{
-    return &Variable::file_stream;
-}
+    Variable::ostream.seekp( offset_ , std::ios::cur );
+    //Variable::file_stream.seek( offset_ );
+} 
  
 size_t GetSession::offset( )
 {
