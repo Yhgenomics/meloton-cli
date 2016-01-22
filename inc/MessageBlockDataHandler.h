@@ -28,6 +28,7 @@ static int MessageBlockDataHandler( ProtocolSession * session , uptr<MessageBloc
         return -1;
     }
 
+    Variable::ostream.seekp( msg->offset( ) , std::ios::beg );
     Variable::ostream.write( msg->data( ).c_str( ) , msg->data( ).size( ) );
     s->receive_size( msg->size( ) );
     s->send_req( );
