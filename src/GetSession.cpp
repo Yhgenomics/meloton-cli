@@ -40,7 +40,7 @@ void GetSession::receive_size( size_t s )
     offset_         += s;
     local_offset_   += s;
 
-    Variable::ostream.seekp( offset_ , std::ios::cur );
+    Variable::ostream.seekp( offset_ , std::ios::beg );
     //Variable::file_stream.seek( offset_ );
 } 
  
