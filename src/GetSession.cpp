@@ -2,8 +2,6 @@
 #include <MessageGet.pb.h>
 #include <Variable.h>
 
-size_t GetSession::offset_ = 0;
-
 void GetSession::on_connect( )
 {
     this->total_size_ = Variable::token->size( Variable::block_index );
@@ -36,11 +34,11 @@ void GetSession::send_req( )
 
 void GetSession::receive_size( size_t s )
 {
-    total_size_     -= s;
-    offset_         += s;
-    local_offset_   += s;
+    total_size_             -= s;
+    Variable::file_offset   += s;
+    local_offset_           += s;
 
-    Variable::ostream.seekp( offset_ , std::ios::beg );
+    Variable::ostream.seekp( Variable::file_offset , std::ios::beg );
     //Variable::file_stream.seek( offset_ );
 } 
  

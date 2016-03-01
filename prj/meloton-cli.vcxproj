@@ -170,6 +170,7 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\MasterConnector.cpp" />
     <ClCompile Include="..\src\MasterSession.cpp" />
+    <ClCompile Include="..\src\Path.cpp" />
     <ClCompile Include="..\src\ProtocolSession.cpp" />
     <ClCompile Include="..\src\PutConnector.cpp" />
     <ClCompile Include="..\src\PutSession.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="..\inc\MessageTokenHandler.h" />
     <ClInclude Include="..\inc\MessageUpdateBlockHandler.h" />
     <ClInclude Include="..\inc\MessageUtils.h" />
+    <ClInclude Include="..\inc\Path.h" />
     <ClInclude Include="..\inc\ProtocolSession.h" />
     <ClInclude Include="..\inc\PutConnector.h" />
     <ClInclude Include="..\inc\PutSession.h" />

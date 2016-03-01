@@ -22,6 +22,7 @@ public:
     static std::string          remote_path;
     static std::string          local_path;
     static size_t               block_index;
+    static size_t               file_offset;
     static uptr<MessageToken>   token;
     static std::ofstream        ostream;
     static std::ifstream        istream;

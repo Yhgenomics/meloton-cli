@@ -27,8 +27,8 @@ public:
 
 private:
 
-    size_t  local_offset_   = 0;
-    static size_t offset_  ;
+    size_t local_offset_   = 0;
+    size_t offset_          = 0;
     size_t get_size_        = 1024*1024;
     size_t total_size_      = 0;
 };

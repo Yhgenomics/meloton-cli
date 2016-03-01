@@ -77,6 +77,9 @@
     <ClCompile Include="..\message\MessagePutAccept.pb.cc">
       <Filter>message</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Path.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="inc">
@@ -214,6 +217,9 @@
       <Filter>message</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\MessagePutAcceptHandler.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\Path.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>
